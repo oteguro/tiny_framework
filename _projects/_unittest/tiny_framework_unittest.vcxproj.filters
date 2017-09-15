@@ -20,6 +20,9 @@
     <ClCompile Include="..\..\src\_unittest\main_unittest.cpp">
       <Filter>source</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\src\_unittest\graphics_unittest.cpp">
+      <Filter>source</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\src\_unittest\base_unittest.h">
@@ -27,6 +30,9 @@
     </ClInclude>
     <ClInclude Include="..\..\include\_unit_test\unittest.h">
       <Filter>header\_unittest</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\_unittest\graphics_unittest.h">
+      <Filter>header</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

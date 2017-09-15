@@ -107,7 +107,7 @@
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <AdditionalLibraryDirectories>../../external/googletest/lib/Debug/;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>gtest.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>gtest.lib;./x64/Debug/tiny_framework.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -144,15 +144,17 @@
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <AdditionalLibraryDirectories>../../external/googletest/lib/Release/;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>gtest.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>gtest.lib;./x64/Release/tiny_framework.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="..\..\include\_unit_test\unittest.h" />
     <ClInclude Include="..\..\src\_unittest\base_unittest.h" />
+    <ClInclude Include="..\..\src\_unittest\graphics_unittest.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\src\_unittest\base_unittest.cpp" />
+    <ClCompile Include="..\..\src\_unittest\graphics_unittest.cpp" />
     <ClCompile Include="..\..\src\_unittest\main_unittest.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
