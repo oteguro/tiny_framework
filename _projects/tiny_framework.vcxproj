@@ -30,7 +30,7 @@
     <ProjectGuid>{17A5948B-8E77-42DD-A4BB-BF68CA2E1D04}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
     <RootNamespace>tiny_framework</RootNamespace>
-    <WindowsTargetPlatformVersion>8.1</WindowsTargetPlatformVersion>
+    <WindowsTargetPlatformVersion>10.0.15063.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">

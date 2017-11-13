@@ -11,10 +11,21 @@ namespace tf_unittest
 {
     TEST(tiny_graphics, create_device)
     {
-        tf::GpuDevice* pDevice = new tf::GpuDevice();
+        tf::Allocator& alloc = tf::DefaultAllocator();
+
+        tf::gpu::Device* pDevice = new tf::gpu::Device();
         EXPECT_NE(pDevice, nullptr);
         EXPECT_NE(pDevice->GetImpl(), nullptr);
-        delete pDevice;
+        TF_SCOPE_EXIT(delete pDevice);
+
+
+        tf::gpu::CommandContextDesc ccDesc;
+        tf::gpu::CommandContext* pCommandContext = pDevice->CreateCommandContext(alloc, ccDesc);
+        EXPECT_NE(pCommandContext, nullptr);
+
+
+
+
     }
 
 

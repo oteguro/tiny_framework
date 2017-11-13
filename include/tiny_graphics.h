@@ -4,25 +4,70 @@
 
 #include "tiny_base.h"
 
+#include <cstdint>
 
 namespace tf
 {
-    class GpuDeviceImpl;
+namespace gpu
+{
+    class DeviceImpl;
+    class CommandContextImpl;
 
-    // The GPU 
-    class GpuDevice
+    class CommandContext;
+
+
+    struct CommandContextDesc
+    {
+        uint32_t                        m_dummy0;
+
+        CommandContextDesc()
+            : m_dummy0(0)
+        {
+        }
+
+    }; // struct CommandContextDesc 
+
+
+
+    // The GPU device. 
+    class Device
     {
     private:
-        GpuDeviceImpl*                  m_impl;
+        DeviceImpl*                  m_impl;
     public:
-                 GpuDevice();
-        virtual ~GpuDevice();
+                 Device();
+        virtual ~Device();
+
+        CommandContext*              CreateCommandContext(Allocator& alloc, CommandContextDesc& desc);
 
 
-        GpuDeviceImpl*                  GetImpl() const;
 
-    }; // class GpuDevice 
+        DeviceImpl*                  GetImpl() const;
+
+    }; // class Device 
 
 
+    class CommandContext //: private NonCopyable
+    {
+    private:
+        friend class Device;
+        friend class DeviceImpl;
+
+        CommandContextImpl*          m_impl;
+
+                 CommandContext();
+        virtual ~CommandContext();
+
+    public:
+
+
+
+
+
+        CommandContextImpl*          GetImpl() const;
+
+    }; // class CommandContext 
+
+} // namespace gpu 
 } // namespace tf 
 

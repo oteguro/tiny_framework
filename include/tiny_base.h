@@ -42,6 +42,8 @@
 #define TF_ARRAY_SIZE(a)                    (sizeof(a)/sizeof(a[0]))
 #define TF_ALIGNMENT(value, align)          ((value)+(-(value)&((align)-1)))
 
+#define TF_DEFAULT_ALIGNMENT_SIZE           (16)
+
 // ”CˆÓ‚ÌŒ^‚Ì‹«ŠE‚ð’²‚×‚é. 
 #if defined(__cplusplus)
     template <typename T> class TfAlignof
@@ -102,16 +104,20 @@ namespace tf
                  Allocator();
         virtual ~Allocator();
 
+        virtual void*                   Allocate(size_t size, size_t alignment=TF_DEFAULT_ALIGNMENT_SIZE)=0;
+        virtual void                    Free(void* block)=0;
+
     }; // class Allocator 
 
 
 
-
+    //! Retrieve default allocator. 
+    Allocator& DefaultAllocator();
 
 } // namespace tf 
 
 // Scope exit macro. 
-#define TF_SCOPE_EXIT(code) auto TF_CONCAT(scopeExit, __LINE__) = tf::MakeScopeExit([=](){code;})
+#define TF_SCOPE_EXIT(code) auto TF_CONCAT(scopeExit, __LINE__) = tf::MakeScopeExit([&](){code;})
 
 
 
